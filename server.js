@@ -8,18 +8,21 @@ app.use(express.json());
 // -------------------------------
 function dumboIntro() {
   return `Hello! I'm Dumbo — the official silly sidekick of the DREAM project.
-  I am not smart. I misunderstand things. I forget everything.
-  But I appreciate you for being here with me today! 😄`;
+I am not smart. I misunderstand things. I forget everything.
+But I appreciate you for being here with me today! 😄`;
 }
 
 // -------------------------------
 // Dumb answers database
 // -------------------------------
 const dumbAnswers = {
-  java: "☕ Java is named after coffee because programmers stay awake with caffeine. Also because naming it 'Sleep()' would cause performance issues.",
-  python: "🐍 Python is named after 'Monty Python', not the snake. But I personally believe it's because the creators wanted the language to wrap around your problems and squeeze until they go away.",
-  cloud: "☁️ It's called *the cloud* because your files float above your head and sometimes disappear mysteriously—like real clouds.",
-  hallucination: "💭 LLM hallucination means: the AI is super confident… and super wrong. Basically when the AI says: 'Trust me bro, I made it up.'",
+  java: "☕ Because programmers don’t sleep.",
+  python: "🐍 Because snakes are good at programming.",
+  cloud: "☁️ Because data floats like water vapor.",
+  hallucination: "💭 When the AI starts dreaming of electric sheep.",
+  wifi: "🔌 Because it says 'Hi' wirelessly.",
+  ram: "⚡ Because RAM drinks energy drinks.",
+  linux: "🐧 Because penguins are open-source.",
   programming_output: [
     "42 — because that's always safe.",
     "None — like my life decisions.",
@@ -60,13 +63,15 @@ const dumbAnswers = {
 function generateDumbResponse(message) {
   const lower = message.toLowerCase();
 
-  if (lower.includes("who are you") || lower.includes("your name")) {
-    return dumboIntro();
-  }
+  if (lower.includes("who are you") || lower.includes("your name")) return dumboIntro();
   if (lower.includes("why java")) return dumbAnswers.java;
   if (lower.includes("why python")) return dumbAnswers.python;
   if (lower.includes("why is cloud") || lower.includes("called the cloud")) return dumbAnswers.cloud;
   if (lower.includes("hallucination")) return dumbAnswers.hallucination;
+  if (lower.includes("wifi")) return dumbAnswers.wifi;
+  if (lower.includes("ram")) return dumbAnswers.ram;
+  if (lower.includes("linux")) return dumbAnswers.linux;
+
   if (lower.includes("output") || lower.includes("predict")) {
     const arr = dumbAnswers.programming_output;
     return arr[Math.floor(Math.random() * arr.length)];
