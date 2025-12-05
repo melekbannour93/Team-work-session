@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // Load rules.json
-const rulesPath = path.join(process.cwd(), "cursor/rules.json");
+const rulesPath = path.join(process.cwd(), ".cursor/rules.json");
 const rules = JSON.parse(fs.readFileSync(rulesPath, "utf8")).rules;
 
 // Helper: detect personality based on trigger words
